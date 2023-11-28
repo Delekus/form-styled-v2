@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+	<style>
+		body {
+			min-height: 100vh;
+			margin: 0;
+			padding: 0 20px 20px;
+			font-family: 'Inter', sans-serif;
+			font-size: 16px;
+			background-color: #808080;
+		}
+
+
+		.content {
+			width: 100%;
+			max-width: 640px;
+			/*Ограничиваем максимальную ширину контента*/
+			margin: 50px auto;
+			/*Центрируем и даем отступ сверху снизу*/
+			padding: 3px;
+			background-color: #7099f8;
+			border-radius: 10px;
+		}
+
+		.form__box {
+			background-color: #fff;
+		}
+
+		/*Надпись над таблицой*/
+		.form-title {
+			text-align: center;
+			padding: 15px;
+			color: #fff;
+			font-size: 2rem;
+			font-weight: 600;
+		}
+
+		/*Иконка для тайтла таблицы*/
+		span::before {
+			content: "";
+			padding-left: 50px;
+			background-image: url(img/icon-home.png);
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: 32px;
+		}
+
+		label {
+			color: #767471;
+			font-size: 0.9rem;
+			font-weight: bolder;
+			padding-left: 10px;
+			/*Отступ для подписей инпутов*/
+
+		}
+
+		input {
+			border-radius: 10px;
+			/*Скругленные углы*/
+			border-width: 1px;
+			width: 90%;
+			/*Ограничиваем ширину для отступа слева*/
+			height: 35px;
+			padding-left: 10%;
+			/*Отступ слева*/
+			font-family: 'Inter', sans-serif;
+			font-size: 0.9rem;
+		}
+
+		/*Цвет рамки при фокусе инпута*/
+		input:focus {
+			outline-color: #7099f8;
+		}
+
+		/*Цвет рамки при фокусе сообщения*/
+		textarea:focus {
+			outline-color: #7099f8;
+		}
+
+		.icon {
+			position: relative;
+			margin-top: 10px;
+			/*Отступ от инпутов до подписей*/
+		}
+
+		.icon::before {
+			content: "";
+			position: absolute;
+			display: inline-block;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto 0;
+			width: 35px;
+			height: 35px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			margin-left: 1.5%;
+			opacity: 0.6;
+		}
+
+		/*иконка для имени*/
+		.input-name::before {
+			content: "";
+			background-image: url(img/icon-man.png);
+		}
+
+		/*Иконка для почты*/
+		.input-mail::before {
+			content: "";
+			background-image: url(img/icon-sms.png);
+		}
+
+		/*Иконка для телефона*/
+		.input-tel::before {
+			content: "";
+			background-image: url(img/icon-tel.png);
+		}
+
+		textarea {
+			resize: vertical;
+			min-height: 50px;
+			font-family: 'Inter', sans-serif;
+			font-size: 0.9rem;
+			border-radius: 10px;
+			/*Скругленные углы*/
+			border-width: 1px;
+			width: 90%;
+			/*Ограничиваем ширину для отступа слева*/
+			padding-left: 10%;
+			/*Отступ слева*/
+			padding-top: 10px;
+		}
+
+		.textarea-message::before {
+			content: "";
+			background-image: url(img/icon-pen.png);
+			width: 30px;
+			height: 30px;
+			top: -50px;
+			left: 5px;
+		}
+
+		form {
+			border: none;
+			padding: 20px;
+		}
+
+		.form__padding {
+			padding: 10px 0;
+		}
+
+		.form-group__btn {
+			text-align: center;
+
+		}
+
+		button {
+			font-family: 'Inter', sans-serif;
+			color: #fff;
+			font-size: 1.2rem;
+			border: none;
+			border-radius: 10px;
+			background-color: #7099f8;
+			width: 200px;
+			height: 40px;
+		}
+
+		button:active {
+			border: 2px #7099f8 solid;
+			background-color: #fff;
+			color: #7099f8;
+		}
+
+		.modif {}
+
+		/*Выбрать все div во всех div'ах кроме div c классом ... контейнера modif*/
+		.modif div:not(div.form-group__textarea) div {
+			display: inline-block;
+			width: 300px;
+		}
+
+		/*Добавить отступ для иконок в инпутах*/
+		.modif>div>div>input {
+			padding-left: 45px;
+		}
+
+		/*Задать ширину для подписей инпутов*/
+		.modif>div>label {
+			display: inline-block;
+			width: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="form-title">
+			<span>Обратная связь</span>
+		</div>
+
+		<div class="form__box">
+			<!--Можно добавить класс-модификатор .modif-->
+			<form class="form modif">
+
+				<div class="form-group__name form__padding ">
+					<label for="id__name" class="label__name">Имя:</label>
+					<div class="input-name place icon">
+						<input class="user-name" type="text" name="user-name" id="id__name" placeholder="Введите Ваше имя">
+					</div>
+				</div>
+
+				<div class="form-group__mail form__padding">
+					<label for="id__mail" class="label__mail">Email:</label>
+					<div class="input-mail icon ">
+						<input class="user-mail" type="text" name="user-mail" id="id__mail" placeholder="Введите адрес Вашей почты">
+					</div>
+				</div>
+
+				<div class="form-group__tel form__padding">
+					<label for="id__tel" class="label__tel">Телефон:</label>
+					<div class="input-tel icon">
+						<input class="user-tel" type="tel" name="user-tel" id="id__tel" placeholder="Введите номер телефона">
+					</div>
+				</div>
+
+				<div class="form-group__textarea form__padding">
+					<label for="id__textarea" class="label__textarea">Сообщение:</label>
+					<div class="textarea-message icon">
+						<textarea class="user-textarea" name="user-textarea" id="id__textarea" cols="40" rows="5"
+							placeholder="Текст сообщения"></textarea>
+					</div>
+				</div>
+
+				<div class="form-group__btn form__padding">
+					<button type="submit" id="button1id" name="button1id" class="btn btn-success">Отправить</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
